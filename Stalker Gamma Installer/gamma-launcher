@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# S.T.A.L.K.E.R. G.A.M.M.A. Linux launcher. No arguments = GUI; see --help.
+if [[ "$(id -u)" -eq 0 ]]; then
+    echo "Do not run this as root." >&2
+    exit 1
+fi
+here="$(cd -- "$(dirname -- "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+cd "$here" && exec python3 -m gamma_linux "$@"
